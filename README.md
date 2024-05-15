@@ -9,7 +9,7 @@ It's main feature is building routes from the given `--dir` and detect new route
 Simply run
 
 ```sh
-npx lighttp --dir path/to/functions/folder
+npx lighttp --dir path/to/functions/folderh
 ```
 
 If no argument is passed, it will use the current dir. Otherwise, check the [Args](#args).

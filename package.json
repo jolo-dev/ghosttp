@@ -1,6 +1,9 @@
 {
   "name": "lighttp",
   "type": "module",
+  "bin": {
+    "lighttp": "dist/index.js"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
     "@types/bun": "latest"

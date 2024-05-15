@@ -49,8 +49,9 @@ export async function runDevServer(dir: string) {
   const router = createRouter();
 
   app.use(router);
+  const serverPath = path.resolve(__dirname, __filename);
 
-  await listenAndWatch('./src/run-dev-server.ts', { cwd: dir });
+  await listenAndWatch(serverPath, { cwd: dir });
 
   logger.info('Following endpoints are available:');
   for (const file of functionFiles) {
