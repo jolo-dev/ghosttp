@@ -1,8 +1,9 @@
 {
-  "name": "lighttp",
+  "name": "gttp",
   "type": "module",
+  "version": "0.0.1",
   "bin": {
-    "lighttp": "dist/index.js"
+    "gttp": "dist/index.js"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",

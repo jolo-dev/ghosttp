@@ -1,6 +1,6 @@
-# lighttp
+# gttp
 
-Lighttp is a lightweight HTTP server designed for your GCP function. It's built for developing GCP functions quicker without rerunning functions manually.
+`gttp` is a lightweight HTTP server designed for your GCP function. It's built for developing GCP functions quicker without rerunning functions manually.
 
 It's main feature is building routes from the given `--dir` and detect new routes when adding or delete files from the folder.
 
@@ -9,7 +9,7 @@ It's main feature is building routes from the given `--dir` and detect new route
 Simply run
 
 ```sh
-npx lighttp --dir path/to/functions/folderh
+npx gttp --dir path/to/functions/folder
 ```
 
 If no argument is passed, it will use the current dir. Otherwise, check the [Args](#args).
