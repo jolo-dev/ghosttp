@@ -1,6 +1,6 @@
-# GServer
+# Ghosttp
 
-`GServer` is a lightweight HTTP server designed for your GCP function. It's built for developing GCP functions quicker without rerunning functions manually.
+**`Ghosttp`** is a lightweight HTTP server designed for your GCP function. It's built for developing GCP functions quicker without rerunning functions manually.
 
 It's main feature is building routes from the given `--dir` and detect new routes when adding or delete files from the folder.
 
@@ -50,7 +50,7 @@ export const handler = async (req: Request, res: Response) => {
 Simply run
 
 ```sh
-npx gserver --dir path/to/functions/folder
+npx ghosttp --dir path/to/functions/folder
 ```
 
 If no argument is passed, it will use the current dir. Otherwise, check the [Args](#args).

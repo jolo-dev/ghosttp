@@ -1,9 +1,9 @@
 {
-  "name": "gserver",
+  "name": "ghosttp",
   "type": "module",
   "version": "0.0.1",
   "bin": {
-    "gttp": "dist/index.js"
+    "ghosttp": "dist/index.js"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
