@@ -4,14 +4,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import chalk from 'chalk';
 import { Command } from 'commander';
+import { version } from './package.json';
 import { runDevServer } from './src/run-dev-server';
 
 const program = new Command();
 
 program
-  .version('1.0.0')
+  .version(version)
   .description('Spin a quick development Server for your GCP functions')
   .option('-d, --dir  [value]', 'Directory folder to watch for changes')
+  .option('-p, --port [value]', 'Port to run the server on')
   .parse(process.argv);
 
 const options = program.opts<{ dir: string }>();

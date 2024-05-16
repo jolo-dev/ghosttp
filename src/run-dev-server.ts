@@ -44,14 +44,14 @@ const processRequest = async (event: H3Event<EventHandlerRequest>, gcpFunction: 
 
 export const app = createApp();
 
-export async function runDevServer(dir: string) {
+export async function runDevServer(dir: string, port?: number) {
   const functionFiles = fs.readdirSync(dir).map((file) => file.slice(0, -3));
   const router = createRouter();
 
   app.use(router);
   const serverPath = path.resolve(__dirname, __filename);
 
-  await listenAndWatch(serverPath, { cwd: dir });
+  await listenAndWatch(serverPath, { cwd: dir, port });
 
   logger.info('Following endpoints are available:');
   for (const file of functionFiles) {

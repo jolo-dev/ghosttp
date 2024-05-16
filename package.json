@@ -1,5 +1,5 @@
 {
-  "name": "gttp",
+  "name": "gserver",
   "type": "module",
   "version": "0.0.1",
   "bin": {
