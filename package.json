@@ -1,9 +1,10 @@
 {
   "name": "ghosttp",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.4",
+  "node": ">= 18",
   "bin": {
-    "ghosttp": "dist/index.js"
+    "ghosttp": "index.js"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
@@ -22,7 +23,7 @@
     "pino-pretty": "^11.0.0"
   },
   "scripts": {
-    "test": "bun test",
-    "build": "bun build index.ts --target node --outdir dist -e crossws"
+    "test": "vitest",
+    "build": "rm -rf dist/ && tsc ./index.ts --module nodenext --outdir dist --moduleResolution nodenext --resolveJsonModule && cp package.json dist/package.json && cp README.md dist/README.md"
   }
 }

@@ -1,6 +1,10 @@
-# Ghosttp
+# GHosttp
 
-**`Ghosttp`** is a lightweight HTTP server designed for your GCP function. It's built for developing GCP functions quicker without rerunning functions manually.
+<p align="center">
+  <img src="./docs/GHosttp.png" />
+</p>
+
+**`GHosttp`** is a lightweight HTTP server designed for your GCP function. It's built for developing GCP functions quicker without rerunning functions manually.
 
 It's main feature is building routes from the given `--dir` and detect new routes when adding or delete files from the folder.
 

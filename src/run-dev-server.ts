@@ -1,10 +1,11 @@
-import fs from 'node:fs';
+import * as fs from 'node:fs';
 import { ServerResponse } from 'node:http';
-import path from 'node:path';
+import * as path from 'node:path';
 import type {
   Request as GcpRequest,
   Response as GcpResponse,
 } from '@google-cloud/functions-framework';
+import chalk from 'chalk';
 import {
   type EventHandlerRequest,
   type H3Event,
@@ -15,7 +16,7 @@ import {
   readBody,
 } from 'h3';
 import { listenAndWatch } from 'listhen';
-import { logger } from './logger';
+import { logger } from './logger.js';
 const handleCorsMiddleware = (event: H3Event<EventHandlerRequest>) => {
   const cors = handleCors(event, {
     origin: '*',
@@ -27,10 +28,9 @@ const handleCorsMiddleware = (event: H3Event<EventHandlerRequest>) => {
   return cors;
 };
 
-// Function to process request
 const processRequest = async (event: H3Event<EventHandlerRequest>, gcpFunction: string) => {
   const data = await readBody(event);
-  const module = await import(`${path.resolve(__dirname, gcpFunction)}`);
+  const module = await import(`${path.resolve(gcpFunction)}`);
   const handler = module.handler;
   const input = { body: data } as unknown as GcpRequest;
   const serverResponse = new ServerResponse(input);
@@ -49,13 +49,14 @@ export async function runDevServer(dir: string, port?: number) {
   const router = createRouter();
 
   app.use(router);
-  const serverPath = path.resolve(__dirname, __filename);
+
+  const filename = import.meta.url.replace('file://', '');
+  const serverPath = path.resolve(filename);
 
   await listenAndWatch(serverPath, { cwd: dir, port });
-
-  logger.info('Following endpoints are available:');
+  logger.info(chalk.blueBright('Following endpoints are available:'));
   for (const file of functionFiles) {
-    logger.info(`/${file}`);
+    logger.info(chalk.bgBlueBright(`/${file}`));
     router.use(
       `/${file}`,
       defineEventHandler(async (event) => {
