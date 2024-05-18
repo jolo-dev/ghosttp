@@ -16,7 +16,8 @@ import {
   readBody,
 } from 'h3';
 import { listenAndWatch } from 'listhen';
-import { logger } from './logger.js';
+import { logger } from './logger';
+
 const handleCorsMiddleware = (event: H3Event<EventHandlerRequest>) => {
   const cors = handleCors(event, {
     origin: '*',
@@ -45,7 +46,6 @@ const processRequest = async (event: H3Event<EventHandlerRequest>, gcpFunction: 
 export const app = createApp();
 
 export async function runDevServer(dir: string, port?: number) {
-  const functionFiles = fs.readdirSync(dir).map((file) => file.slice(0, -3));
   const router = createRouter();
 
   app.use(router);
@@ -53,10 +53,16 @@ export async function runDevServer(dir: string, port?: number) {
   const filename = import.meta.url.replace('file://', '');
   const serverPath = path.resolve(filename);
 
-  await listenAndWatch(serverPath, { cwd: dir, port });
+  const listener = await listenAndWatch(serverPath, {
+    cwd: dir,
+    port,
+    logger,
+  });
+
+  const functionFiles = fs.readdirSync(dir).map((file) => file.slice(0, -3));
   logger.info(chalk.blueBright('Following endpoints are available:'));
   for (const file of functionFiles) {
-    logger.info(chalk.bgBlueBright(`/${file}`));
+    logger.info(chalk.bgBlueBright(`${listener.url}${file}`));
     router.use(
       `/${file}`,
       defineEventHandler(async (event) => {
