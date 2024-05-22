@@ -14,5 +14,5 @@ export const handler = async (req: Request, res: Response) => {
 
   res.set('Content-Type', 'application/json');
   res.send('Foo');
-  return new Response('Hello !');
+  return new Response('Hello World!');
 };

@@ -19,8 +19,8 @@ That generates a development server with hot module reloading (HMR) and creates 
 ✅ Server initialized in                        GHosttp 12:21:58 AM
 👀 Watching ./src for                           GHosttp 12:21:58 AM
 ℹ Following endpoints are available             GHosttp 12:21:58 AM
-ℹ http://localhost:3000/logger                  GHosttp 12:21:58 AM
-ℹ http://localhost:3000/run-dev-server       
+ℹ /logger                  GHosttp 12:21:58 AM
+ℹ /run-dev-server       
 ```
 
 ### Opinionated Handler
@@ -70,6 +70,7 @@ functions
 Options:
   -V, --version       output the version number
   -d, --dir  [value]  Directory folder to watch for changes
+  -p, --port [number] The port number where the dev server shall run
   -h, --help          display help for command
 ```
 
@@ -78,15 +79,13 @@ Options:
 To install dependencies:
 
 ```bash
-bun install
+pnpm install
 ```
 
 To run:
 
 ```bash
-bun run index.ts
+pnpm dev --dir path/to/folder # Otherwise it would take the "." (root)
 ```
-
-This project was created using `bun init` in bun v1.1.7. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
 
 ## [LICENSE](./docs/LICENSE.md)

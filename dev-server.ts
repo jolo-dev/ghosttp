@@ -33,7 +33,6 @@ async function processRequest(event: H3Event<EventHandlerRequest>, gcpFunction: 
   logger.info(`Processing request for ${path.resolve(gcpFunction)}`);
   const module = await import(`${path.resolve(gcpFunction)}`);
   const handler = module.handler;
-  logger.info(`Handler: ${handler}`);
   const input = { body: data } as unknown as GcpRequest;
   const serverResponse = new ServerResponse(input);
   const res = {
