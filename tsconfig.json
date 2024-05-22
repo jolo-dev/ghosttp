@@ -36,6 +36,8 @@
   ],
   "include": [
     "src/**/*.ts",
-    "index.ts"
+    "index.ts",
+    "src/run-dev-server.ts",
+    "dev-server.ts"
   ],
 }

@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "name": "Run Dev Server",
+            "request": "launch",
+            "runtimeExecutable": "bun",
+            "runtimeArgs": [
+                "run",
+                "./index.ts",
+                "--dir",
+                "tests"
+            ],
+            "console": "integratedTerminal"
+        },
+    ]
+}

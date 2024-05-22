@@ -11,14 +11,16 @@ It's main feature is building routes from the given `--dir` and detect new route
 That generates a development server with hot module reloading (HMR) and creates a route based on the filename.
 
 ```sh
+                                                                                                  GHosttp 12:21:58 AM
   ➜ Local:    http://localhost:3000/
   ➜ Network:  use --host to expose
 
-[listhen 11:27:15 AM] 🚀 Loading server entry ./src/run-dev-server.ts
-[listhen 11:27:15 AM] ✅ Server initialized in 74ms
-[listhen 11:27:15 AM] 👀 Watching ./tests for changes
-[11:27:15.206] INFO (21369): Following endpoints are available:
-[11:27:15.206] INFO (21369): /dev-server.test
+🚀 Loading server entry ./src/run-dev-server.ts GHosttp 12:21:58 AM
+✅ Server initialized in                        GHosttp 12:21:58 AM
+👀 Watching ./src for                           GHosttp 12:21:58 AM
+ℹ Following endpoints are available             GHosttp 12:21:58 AM
+ℹ http://localhost:3000/logger                  GHosttp 12:21:58 AM
+ℹ http://localhost:3000/run-dev-server       
 ```
 
 ### Opinionated Handler
@@ -86,3 +88,5 @@ bun run index.ts
 ```
 
 This project was created using `bun init` in bun v1.1.7. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+
+## [LICENSE](./docs/LICENSE.md)

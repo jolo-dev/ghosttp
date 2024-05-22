@@ -1,7 +1,7 @@
 {
   "name": "ghosttp",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "node": ">= 18",
   "bin": {
     "ghosttp": "index.js"
@@ -22,6 +22,7 @@
   },
   "scripts": {
     "test": "vitest",
-    "build": "rm -rf dist/ && tsc ./index.ts --module nodenext --outdir dist --moduleResolution nodenext --resolveJsonModule && cp package.json dist/package.json && cp README.md dist/README.md"
+    "build": "rm -rf dist/ && tsc ./index.ts --module nodenext --outdir dist --moduleResolution nodenext --resolveJsonModule",
+    "pkg": "cp README.md dist/README.md && cp -r ./docs/. dist/docs/"
   }
 }

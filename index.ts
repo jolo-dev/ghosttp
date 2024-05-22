@@ -17,15 +17,12 @@ program
   .parse(process.argv);
 
 const options = program.opts<{ dir: string; port?: number }>();
-
-if (options.dir) {
-  const srcDir = path.resolve(options.dir);
-  if (!fs.existsSync(srcDir)) {
-    program.error(chalk.red(`Directory ${srcDir} does not exist`));
-  }
-  runDevServer(srcDir, options.port);
-} else {
-  runDevServer('.');
+const dir = options.dir ?? '.';
+const srcDir = path.resolve(dir);
+if (!fs.existsSync(srcDir)) {
+  program.error(chalk.red(`Directory ${srcDir} does not exist`));
 }
+
+runDevServer(srcDir, options.port);
 
 program.parse();
