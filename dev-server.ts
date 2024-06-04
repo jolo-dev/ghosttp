@@ -28,19 +28,34 @@ const handleCorsMiddleware = (event: H3Event<EventHandlerRequest>) => {
   return cors;
 };
 
+// Assuming necessary imports are already done
 async function processRequest(event: H3Event<EventHandlerRequest>, gcpFunction: string) {
-  const data = await readBody(event);
-  logger.info(`Processing request for ${path.resolve(gcpFunction)}`);
+  logger.info(`Processing request for ${gcpFunction}`);
+
   const module = await import(`${path.resolve(gcpFunction)}`);
   const handler = module.handler;
-  const input = { body: data } as unknown as GcpRequest;
-  const serverResponse = new ServerResponse(input);
-  const res = {
-    set: (key: string, value: string) => serverResponse.setHeader(key, value),
-    send: (data: string) => serverResponse.end(data),
-  } as unknown as GcpResponse;
+
+  let input = event.node.req;
+  let res = createResponse(event);
+
+  if (event.method === 'POST') {
+    input = await preparePostRequestBody(event);
+  }
+
   const result = await handler(input, res);
   return result || { message: 'No response' };
+}
+
+function createResponse(event: H3Event<EventHandlerRequest>) {
+  return {
+    set: (key: string, value: string) => event.node.res.setHeader(key, value),
+    send: (data: string) => event.node.res.end(data),
+  };
+}
+
+async function preparePostRequestBody(event: H3Event<EventHandlerRequest>): Promise<GcpRequest> {
+  const data = await readBody(event);
+  return { body: data } as unknown as GcpRequest;
 }
 
 const cwd = process.env.CWD ?? '.';

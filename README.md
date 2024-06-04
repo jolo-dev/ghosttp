@@ -11,16 +11,15 @@ It's main feature is building routes from the given `--dir` and detect new route
 That generates a development server with hot module reloading (HMR) and creates a route based on the filename.
 
 ```sh
-                                                                                                  GHosttp 12:21:58 AM
   ➜ Local:    http://localhost:3000/
   ➜ Network:  use --host to expose
 
 🚀 Loading server entry ./src/run-dev-server.ts GHosttp 12:21:58 AM
-✅ Server initialized in                        GHosttp 12:21:58 AM
-👀 Watching ./src for                           GHosttp 12:21:58 AM
+✅ Server initialized in 90ms                   GHosttp 12:21:58 AM
+👀 Watching ./path/to/functions for changes     GHosttp 12:21:58 AM
 ℹ Following endpoints are available             GHosttp 12:21:58 AM
-ℹ /logger                  GHosttp 12:21:58 AM
-ℹ /run-dev-server       
+ℹ /logger                                       GHosttp 12:21:58 AM
+ℹ /run-dev-server                               GHosttp 12:21:58 AM
 ```
 
 ### Opinionated Handler
@@ -37,7 +36,7 @@ export const handler = async (req: Request, res: Response) => {
     res.set('Access-Control-Allow-Methods', 'GET');
     res.set('Access-Control-Allow-Headers', 'Content-Type');
     res.set('Access-Control-Max-Age', '3600');
-    res.status(204).send('')`
+    res.status(204).send('')
     return;
   }
 

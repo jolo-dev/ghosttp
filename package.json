@@ -1,7 +1,25 @@
 {
   "name": "ghosttp",
+  "description": "A simple and fast HTTP server for your GCP functions",
+  "version": "0.0.9",
   "type": "module",
-  "version": "0.0.7",
+  "contributors": [
+    "@jolo-dev"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jolo-dev/ghosttp"
+  },
+  "homepage": "https://github.com/jolo-dev/ghosttp",
+  "keywords": [
+    "http",
+    "server",
+    "gcp",
+    "cloud-functions",
+    "h3",
+    "development"
+  ],
   "node": ">= 20",
   "bin": {
     "ghosttp": "index.js"

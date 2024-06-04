@@ -2,7 +2,7 @@ import type { Request, Response } from '@google-cloud/functions-framework';
 
 export const handler = async (req: Request, res: Response) => {
   res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods', 'POST');
+  res.set('Access-Control-Allow-Methods', 'GET');
     
   if (req.method === 'OPTIONS') {
     res.set('Access-Control-Allow-Methods', 'GET');
